@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import Form from "./components/Form";
-import FilterButton from "./components/FilterButton";
-import Todo from "./components/Todo";
+import Form from "./components/Form.js";
+import FilterButton from "./components/FilterButton.js";
+import Todo from "./components/Todo.js";
 import { nanoid } from "nanoid";
 
 
