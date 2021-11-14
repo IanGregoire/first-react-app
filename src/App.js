@@ -17,13 +17,22 @@ function App(props) {
   }  
   const taskList = tasks.map(task => (
     <Todo id={task.id} name={task.name} completed={task.completed} key={task.id} 
-    toggleTaskCompleted={toggleTaskCompleted} deleteTask={deleteTask}/>
+    toggleTaskCompleted={toggleTaskCompleted} editTask={editTask} deleteTask={deleteTask}/>
   ));
   const tasksNoun = taskList.length != 1 ? 'tasks' : 'task';
   const headingText = `${taskList.length} ${tasksNoun} remaining`;
   function addTask(name) {
     const newTask = { id: "todo-"+nanoid() , name: name, compelted: false };
     setTasks([...tasks, newTask]);
+  }
+  function editTask(id, newName) {
+    const editedTaskList = tasks.map(task => {
+      if(id === task.id) {
+        return {...tasks, name: newName}
+      }
+      return task;
+    });
+    setTasks(editedTaskList);
   }
   function deleteTask(id) {
     const remainingTasks = tasks.filter(tasks => id !== task.id);
